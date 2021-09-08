@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_193534) do
+ActiveRecord::Schema.define(version: 2021_09_08_192116) do
+
+  create_table "pet_trainers", force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "trainer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_pet_trainers_on_pet_id"
+    t.index ["trainer_id"], name: "index_pet_trainers_on_trainer_id"
+  end
 
   create_table "pets", force: :cascade do |t|
     t.string "breed"
@@ -28,6 +37,18 @@ ActiveRecord::Schema.define(version: 2021_08_30_193534) do
     t.string "location"
     t.string "name"
     t.integer "capacity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trainers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "user_name"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
